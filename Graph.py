@@ -27,7 +27,7 @@ class Graph:
         """
         card = self.copy()
         for vertex in range(len(card.vertices)):
-            if delete in vertex:
+            if delete in card.vertices[vertex]:
                 card.vertices[vertex].remove(delete)
             for edge in range(len(card.vertices[vertex])):
                 if card.vertices[vertex][edge] > delete:

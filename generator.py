@@ -105,37 +105,6 @@ def genBiClass(vertices: int, numDeg1: int, deg1: int, deg2: int, possibilities:
         biClass.append(individual(vertices, validVec))
     return biClass
 
-#This is probably mostly gonna go in the wrapper
-def main():
-    vertices = int(sys.argv[1])
-    sys.stdout = open(sys.argv[2], "w")
-
-    possibilities = genSpecs(vertices)
-
-    for deg1 in range(2, vertices):
-        if not deg1 % 2:
-
-            if not vertices % 2:
-                start = 2
-            else:
-                start = 1
-
-            for numDeg1 in range(start, vertices, 2):
-                biClass = genBiClass(vertices, numDeg1, deg1, deg1 - 1, possibilities)
-                for graph in biClass:
-                    graph.print()
-
-        else:
-            for numDeg1 in range(2, vertices, 2):
-                biClass = genBiClass(vertices, numDeg1, deg1, deg1 - 1, possibilities)
-                for graph in biClass:
-                    graph.print()
-    
-    sys.stdout.close()
-
-if __name__ == "__main__":
-    main()
-
 #Unit tests
 def test_bitCount():
     assert bitCount(0) == 0
